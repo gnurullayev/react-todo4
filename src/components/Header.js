@@ -33,7 +33,7 @@ function Header({setLenguage, lenguage}) {
                                 <option value="ru">RU</option>
                                 <option value="en">EN</option>
                             </select>
-                            <button className="btn btn-outline-success" type="submit"style={{width: "100px"}}>{lenguageContent[lenguage].header.signIn}</button>
+                            <button className="btn btn-outline-success" type="button"style={{width: "100px"}}>{lenguageContent[lenguage].header.signIn}</button>
                         </div>
                     </div>
                 </nav>
