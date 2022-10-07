@@ -24,6 +24,9 @@ code {
   background-size: cover;
 }
 
+.main {
+  min-height: calc(100vh - 117px - 86px);
+}
 .edit-modal {
   position: fixed;
   top: 0;

@@ -1,9 +1,11 @@
-import { useReducer} from "react";
+import { useReducer,useState} from "react";
 import EditForm from "./components/EditForm";
 import FormList from "./components/FormList";
 import TodoList from "./components/TodoList";
 import { reducer } from "./redux/reucer";
 import {addPost,clearList,deleteTodo,complateHandler,showModalForm,notShowModalForm,editTodo,searchTodoItem} from"./redux/actions"
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 
 const initalState = {
@@ -16,6 +18,7 @@ const initalState = {
 
 
 function App() {
+  const [lenguage,setLenguage] = useState("uz")
 
   const [{isModalShow,searchTodo,addTodoError}, dispatch] = useReducer(reducer,initalState)
   
@@ -33,29 +36,33 @@ function App() {
     <>
 
       <div className="App">
-        <div className="container my-5">
-          {
-            isModalShow 
-            ?(
-              <EditForm 
-              notShowEditForm = {notShowEditForm}
-              editTodo = {editTodos} 
-              />
-            )
-            :
-            null 
-          }
+        <Header lenguage = {lenguage} setLenguage ={setLenguage}/>
+        <div className="main">
+          <div className="container my-5">
+            {
+              isModalShow 
+              ?(
+                <EditForm 
+                notShowEditForm = {notShowEditForm}
+                editTodo = {editTodos} 
+                />
+              )
+              :
+              null 
+            }
 
-          <div className="row justify-content-center justify-content-md-between gy-4">
-            <div className="col-md-6 ">
-              <FormList addPost = {createPost} clearList ={clearTodos} searchTodos = {searchTodos} addTodoError = {addTodoError}/>
-            </div>
+            <div className="row justify-content-center justify-content-md-between gy-4">
+              <div className="col-md-6 ">
+                <FormList addPost = {createPost} clearList ={clearTodos} searchTodos = {searchTodos} addTodoError = {addTodoError}/>
+              </div>
 
-            <div className="col-md-6">
-              <TodoList todos = {searchTodo} deletTodo = {deleteItem} compateHanler = {complateHanler} ShowEditForm ={ShowEditForm}/>
+              <div className="col-md-6">
+                <TodoList todos = {searchTodo} deletTodo = {deleteItem} compateHanler = {complateHanler} ShowEditForm ={ShowEditForm}/>
+              </div>
             </div>
           </div>
         </div>
+        <Footer lenguage = {lenguage}/>
       </div>
 
     </>
